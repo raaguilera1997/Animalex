@@ -1,13 +1,12 @@
 {
   "name": "animalex",
   "version": "0.0.1",
-  "description": "animalex",
+  "description": "animalex store",
   "productName": "animalex",
-  "author": "Rafa <raaguilera@estudiantes.uci.cu>",
+  "author": "raafuilera1997",
   "private": true,
   "scripts": {
-    "lint": "eslint --ext .js,.ts,.vue ./",
-    "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
+    "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
@@ -19,13 +18,14 @@
     "vue-router": "^4.0.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.10.0",
-    "@typescript-eslint/parser": "^5.10.0",
+    "@babel/eslint-parser": "^7.13.14",
     "eslint": "^8.10.0",
     "eslint-plugin-vue": "^9.0.0",
-    "eslint-config-prettier": "^8.1.0",
-    "prettier": "^2.5.1",
-    "@types/node": "^12.20.21",
+    "eslint-webpack-plugin": "^3.1.1",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
     "@quasar/app-webpack": "^3.0.0"
   },
   "browserslist": [
