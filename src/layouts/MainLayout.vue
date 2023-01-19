@@ -12,35 +12,68 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+        ANIMALEX
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <q-btn flat rounded dense icon="group_add"  />
       </q-toolbar>
     </q-header>
+
 
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
+      :breakpoint="500"
       bordered
+      class="bg-grey-3"
     >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
+      <q-scroll-area class="fit">
+        <q-list>
 
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
+          <template v-for="(menuItem, index) in menuList" :key="index">
+            <q-item clickable :active="menuItem.label === 'Outbox'" v-ripple>
+              <q-item-section avatar>
+                <q-icon :name="menuItem.icon" />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>{{menuItem.title}}</q-item-label>
+                <q-item-label caption lines="2">{{menuItem.descripcion}}</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-separator  />
+          </template>
+
+        </q-list>
+      </q-scroll-area>
     </q-drawer>
+<!--    <q-drawer-->
+<!--      v-model="leftDrawerOpen"-->
+<!--      show-if-above-->
+<!--      class="bg-grey-2"-->
+<!--      bordered-->
+<!--    >-->
+<!--      <q-list>-->
+<!--        <q-item-label class="text-dark" header style="font-weight: bold"-->
+<!--        >-->
+<!--        ANIMALEX-->
+<!--        </q-item-label>-->
+
+<!--        <EssentialLink-->
+<!--          v-for="link in essentialLinks"-->
+<!--          :key="link.title"-->
+<!--          v-bind="link"-->
+<!--        />-->
+<!--      </q-list>-->
+<!--    </q-drawer>-->
 
     <q-page-container>
-      <router-view />
+      <transition
+        enter-active-class="animated slideInRight"
+        leave-active-class="animated fadeOut"
+        mode="out-in"
+      >
+        <router-view/>
+      </transition>
     </q-page-container>
   </q-layout>
 </template>
@@ -48,51 +81,33 @@
 <script>
 import { defineComponent, ref } from 'vue'
 import EssentialLink from 'components/EssentialLink.vue'
-const linksList = [
+
+const menuList = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    title: 'Aves',
+    descripcion: 'Accesorios,aves de diferentes tipos, comida y mucho más...',
+    icon: 'account_tree',
+    // link: 'https://quasar.dev'
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
+    title: 'Peces',
+    descripcion: 'Accesorios,peces,peceras,comidas y mucho más....',
+    icon: 'account_tree',
+    // link: 'https://github.com/quasarframework'
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
+    title: 'Perros',
+    descripcion: 'Accesorios,comidas,juguetes y mucho más...',
+    icon: 'account_tree',
+    // link: 'https://chat.quasar.dev'
   },
   {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
+    title: 'Roedores',
+    descripcion: 'Accesorios,animales,comidas, y mucho más...',
+    icon: 'account_tree',
     link: 'https://forum.quasar.dev'
   },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
 ]
-
 export default defineComponent({
   name: 'MainLayout',
 
@@ -104,7 +119,8 @@ export default defineComponent({
     const leftDrawerOpen = ref(false)
 
     return {
-      essentialLinks: linksList,
+      menuList:menuList,
+      // essentialLinks: linksList,
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
