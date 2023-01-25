@@ -1,20 +1,20 @@
 <template>
   <div class="q-pa-md">
-    <div class="row justify-center q-gutter-x-xl ">
+    <div class="row q-col-gutter-lg">
       <q-intersection
         v-for="index in list.length"
         :key="index"
         transition="scale"
-        class="example-item"
+        class="col-6"
       >
-        <q-card class="q-ma-sm my-card  q-pa-lg" style="width:50vh;height: 50vh ">
-          <q-img v-if="index==1" src="~assets/aves.jpg" style="width: 100%;height: 60%"/>
-          <q-img v-if="index==2" src="~assets/peces.jpg" style="width: 100%;height: 60%;margin-top: 22px"/>
-          <q-img v-if="index==3" src="~assets/perros.jpg" style="width: 100%;height: 60%"/>
-          <q-img v-if="index==4" src="~assets/roedores.jpg" style="width: 100%;height: 60%"/>
+        <q-card class="my-card q-pa-md " style="width:100%;height: 40vh " @click="router.push({path:'category'})">
+          <q-img v-if="index==1" src="~assets/birds.jpg" style="width: 100%;height: 70%"/>
+          <q-img v-if="index==2" src="~assets/fish.jpg" style="width: 100%;height: 70%"/>
+          <q-img v-if="index==3" src="~assets/dogs.jpg" style="width: 100%;height: 70%"/>
+          <q-img v-if="index==4" src="~assets/roters.jpg" style="width: 100%;height: 70%"/>
           <q-card-section>
-            <div class="text-h6" :class="index==1?'q-pt-md':''">{{ list[index-1].title }}</div>
-            <div class="text-caption text-justify text-grey">
+            <div class="text-h6" >{{ list[index-1].title }}</div>
+            <div class="text-caption  text-grey-7" style="font-weight: bold">
               {{ list[index-1].descripcion }}
             </div>
           </q-card-section>
@@ -25,7 +25,8 @@
 </template>
 <script setup>
   import { ref, reactive, onMounted, computed, watch } from 'vue'
-
+  import { useRouter, useRoute } from 'vue-router'
+  const router = useRouter()
   const list = ref(
     [
       {
@@ -51,6 +52,20 @@
 
     ]
   )
+  function convertString(select) {
+    let selected = {...select}
+    let result = {}
+    Object.keys(selected).map(x => {
+      if (typeof selected[x] === 'object') {
+        result[x] = JSON.stringify(selected[x])
+      } else {
+        result[x] = selected[x]
+      }
+    })
+    debugger
+    return result
+  }
+
 
 
 </script>

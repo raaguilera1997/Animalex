@@ -8,16 +8,21 @@
           round
           icon="menu"
           aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
+          @click="toggleLeftDrawer"/>
 
+        <q-avatar>
+          <q-img  src="~assets/animalex.jpg"/>
+        </q-avatar>
         <q-toolbar-title>
-        ANIMALEX
+        TIENDA DE MASCOTAS
         </q-toolbar-title>
 
-        <q-btn flat rounded dense icon="group_add"  />
+        <q-btn flat round dense icon="group_add" />
       </q-toolbar>
+
+
     </q-header>
+
 
 
     <q-drawer
@@ -27,9 +32,10 @@
       bordered
       class="bg-grey-3"
     >
-      <q-scroll-area class="fit">
-        <q-list>
+      <q-item-label class="text-dark" header style="font-weight: bold" >TIENDA DE MASCOTAS</q-item-label>
 
+
+        <q-list>
           <template v-for="(menuItem, index) in menuList" :key="index">
             <q-item clickable :active="menuItem.label === 'Outbox'" v-ripple>
               <q-item-section avatar>
@@ -44,7 +50,8 @@
           </template>
 
         </q-list>
-      </q-scroll-area>
+
+
     </q-drawer>
 <!--    <q-drawer-->
 <!--      v-model="leftDrawerOpen"-->

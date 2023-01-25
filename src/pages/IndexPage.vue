@@ -1,7 +1,7 @@
 <template>
   <q-page>
-    <div class="row ">
-      <div class="col-xs-12 col-md-8  ">
+    <div class="row">
+      <div class="col-8">
        <HomePage></HomePage>
       </div>
       <div class="col-xs-12 col-md-4 flex flex-center">
@@ -17,7 +17,7 @@
 <script setup>
   import { Vue3Lottie } from 'vue3-lottie'
   import 'vue3-lottie/dist/style.css'
-  import AstronautJSON from '../assets/lottie'
+  import AstronautJSON from '../assets/principal.json'
   import HomePage from '../components/HomePage/HomePage'
 
 
